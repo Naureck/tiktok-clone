@@ -1,8 +1,10 @@
-import React from 'react'
+import style from './Sidebar.module.scss'
 
 function Sidebar() {
     return (
-        <div>Sidebar</div>
+        <div className={style.DivWrapper}>
+            <h2>SideBar</h2>
+        </div>
     )
 }
 

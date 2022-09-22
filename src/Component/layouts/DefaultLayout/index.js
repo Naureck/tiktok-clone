@@ -1,13 +1,15 @@
+
+import style from './DefaultLayout.module.scss'
 import Header from "./Header"
 import Sidebar from "./Sidebar"
 
-function DefalutLayout({ children }) {
+function DefaultLayout({ children }) {
     return (
-        <div>
+        <div className={style.DivWrapper}>
             <Header />
-            <div className="container">
+            <div className={style.container}>
                 <Sidebar />
-                <div className="content">
+                <div className={style.content}>
                     {children}
                 </div>
             </div>
@@ -15,4 +17,4 @@ function DefalutLayout({ children }) {
     )
 }
 
-export default DefalutLayout
+export default DefaultLayout
