@@ -1,0 +1,17 @@
+.wrapper {
+   padding: 9px 16px;
+   cursor: pointer;
+   display: flex;
+   -webkit-box-align: center;
+   align-items: center;
+
+   span {
+      font-weight: 600;
+      font-size: 16px;
+      color: rgb(22, 24, 35);
+   }
+
+   &:hover {
+      background: var(--item-hover);
+   }
+}

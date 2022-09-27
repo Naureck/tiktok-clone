@@ -97,51 +97,26 @@
    }
 }
 
-.DivContainerSug {
-   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-   position: absolute;
-   background-color: #fff;
-   z-index: 1001;
-   width: 361px;
-   height: auto;
-   margin-top: 9px;
-   border-radius: 8px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+//Search Result
 
-   .DivInnerSug {
-      margin-top: 7px;
-   }
+.IconInnerResult {
+   width: 15px;
+   height: 15px;
+   margin-right: 10px;
+}
 
-   ul {
-   }
+.ResultText {
+   color: black;
+   text-decoration: none;
+   font-size: 16px;
+   font-weight: 700;
+}
 
-   li {
-      list-style: none;
-      width: 361px;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-
-      img {
-         width: 15px;
-         height: 15px;
-         margin-right: 10px;
-      }
-
-      a {
-         color: black;
-         text-decoration: none;
-         font-size: 16px;
-         font-weight: 700;
-      }
-
-      &:hover {
-         background-color: rgba(197, 197, 197, 0.12);
-      }
-   }
+.SearchTitle {
+   padding: 5px 12px;
+   font-size: 14px;
+   font-weight: 600;
+   color: rgba(22, 24, 35, 0.5);
 }
 
 // Container Action
@@ -149,74 +124,9 @@
    display: flex;
    align-items: center;
 
-   .DivUploadContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 110px;
-      padding: 0 16px;
-      height: 36px;
-      border: 1px solid rgba(22, 24, 35, 0.12);
-      border-radius: 2px;
-      user-select: none;
-      cursor: pointer;
-
-      a {
-         text-decoration: none;
-         color: black;
-         font-weight: bold;
-         font-size: 16px;
-
-         svg {
-            margin-right: 8px;
-         }
-      }
-
-      &:hover {
-         background-color: rgba(197, 197, 197, 0.12);
-      }
-   }
-
-   .DivLoginContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 16px;
-      background-color: var(--primary);
-      padding: 6px 8px;
-      border-radius: 4px;
-      user-select: none;
-      cursor: pointer;
-      min-width: 100px;
-      line-height: 22px;
-
-      a {
-         color: white;
-         text-decoration: none;
-         font-weight: bold;
-         font-size: 16px;
-      }
-
-      &:hover {
-         background-color: #e91f47;
-      }
-   }
-
-   .DivOptionContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 16px;
-      user-select: none;
-      cursor: pointer;
-      width: 20px;
-      height: 20px;
-   }
-
    .DivMessageContainer {
       margin-left: 16px;
       cursor: pointer;
-      height: 32px;
       padding: 3px 3px 0;
       width: 32px;
       height: 32px;
@@ -230,6 +140,9 @@
    .DivInboxContainer {
       margin-left: 16px;
       cursor: pointer;
+      padding: 3px 3px 0;
+      width: 32px;
+      height: 32px;
    }
 
    .DivProfileContainer {

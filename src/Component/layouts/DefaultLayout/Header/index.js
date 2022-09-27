@@ -1,10 +1,35 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+
+import AccountsItem from '~/Component/AccountsItem';
+import DivItemContent from '~/Component/DivItemContent';
+import PopperWrapper from '~/Component/PopperWrapper';
+import MenuList from '~/Component/PopperWrapper/MenuList';
+import Button from '~/Component/Button';
 import style from './header.module.scss'
 import images from '~/Asset/img'
 
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon="fa-solid fa-globe" />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon="fa-regular fa-circle-question" />,
+        title: 'Feedback and Help',
+        to: '/feedback'
+    },
+    {
+        icon: < FontAwesomeIcon icon="fa-regular fa-keyboard" />,
+        title: 'Keyboard Shortcuts',
+    }
+]
+
 function Header() {
+
     return (
         <header className={style.DivContainerHeader}>
             <div className={style.DivWrapperHeader}>
@@ -25,46 +50,62 @@ function Header() {
                             <FontAwesomeIcon icon="fas fa-search" />
                         </button>
                     </form>
-                    <div className={style.DivContainerSug}>
-                        <div className={style.DivInnerSug}>
-                            <ul>
-                                <li><img src={images.search} alt='Search...' /><a href='/'>a</a></li>
-                                <li><img src={images.search} alt='Search...' /><a href='/'>a</a></li>
-                                <li><img src={images.search} alt='Search...' /><a href='/'>a</a></li>
-                                <li><img src={images.search} alt='Search...' /><a href='/'>a</a></li>
-                            </ul>
-                        </div>
-                    </div>
+
+                    <PopperWrapper searchResult>
+                        <DivItemContent>
+                            <img className={style.IconInnerResult} src={images.search} alt='Search...' />
+                            <a className={style.ResultText} href='/'>a</a>
+                        </DivItemContent>
+                        <DivItemContent>
+                            <img className={style.IconInnerResult} src={images.search} alt='Search...' />
+                            <a className={style.ResultText} href='/'>a</a>
+                        </DivItemContent>
+                        <DivItemContent>
+                            <img className={style.IconInnerResult} src={images.search} alt='Search...' />
+                            <a className={style.ResultText} href='/'>a</a>
+                        </DivItemContent>
+                        <DivItemContent>
+                            <img className={style.IconInnerResult} src={images.search} alt='Search...' />
+                            <a className={style.ResultText} href='/'>a</a>
+                        </DivItemContent>
+                        <div className={style.SearchTitle}>Accounts</div>
+                        <AccountsItem />
+                        <AccountsItem />
+                        <AccountsItem />
+                        <AccountsItem />
+                        <DivItemContent>
+                            <span>View all results for "hoa"</span>
+                        </DivItemContent>
+                    </PopperWrapper>
                 </div>
 
                 {/* Action */}
                 <div className={style.DivUploadAndUser}>
-                    <div className={style.DivUploadContainer}>
-                        <Link to={{ pathname: '/upload' }}>
-                            <FontAwesomeIcon icon="fas fa-plus" />
-                            <span>Upload</span>
-                        </Link>
-                    </div>
-                    <div className={style.DivLoginContainer}>
-                        <Link to={{ pathname: '/login' }}>
-                            <span>Login</span>
-                        </Link>
-                    </div>
-                    <div className={style.DivOptionContainer}>
-                        <img src={images.option} alt='More Option' />
-                    </div>
+                    <Button upload to='/upload'>
+                        <FontAwesomeIcon icon="fas fa-plus" />
+                        Upload
+                    </Button>
+                    <Button primary to='/login'>Log in</Button>
 
-                    {/* <div className={style.DivMessageContainer}>
-                        <Link to={{ pathname: '/message' }}>
-                            <FontAwesomeIcon icon="far fa-paper-plane" />
-                        </Link>
-                    </div>
-                    <div className={style.DivInboxContainer}>
-                        <FontAwesomeIcon icon="fas fa-inbox" />
-                    </div>
+                    {/* <Tippy content='Message'>
+                        <div className={style.DivMessageContainer}>
+                            <Link to={{ pathname: '/message' }}>
+                                <FontAwesomeIcon icon="far fa-paper-plane" />
+                            </Link>
+                        </div>
+                    </Tippy>
+
+                    <Tippy content='Inbox'>
+                        <div className={style.DivInboxContainer}>
+                            <FontAwesomeIcon icon="fas fa-inbox" />
+                        </div>
+                    </Tippy>
                     <div className={style.DivProfileContainer}>
                         <FontAwesomeIcon icon="fas fa-user" />
                     </div> */}
+
+
+                    <MenuList items={MENU_ITEMS} />
                 </div>
             </div>
         </header>

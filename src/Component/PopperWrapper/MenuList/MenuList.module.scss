@@ -1,0 +1,25 @@
+.DivOptionContainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 18px 6px;
+   margin-left: 16px;
+   user-select: none;
+   cursor: pointer;
+
+   .menu-items {
+      margin-left: 0px;
+      justify-content: flex-start;
+      padding: 0;
+      border-radius: 0;
+   }
+
+   .popper-wrap {
+      padding-bottom: 8px;
+   }
+
+   &:hover div {
+      display: block;
+   }
+}
