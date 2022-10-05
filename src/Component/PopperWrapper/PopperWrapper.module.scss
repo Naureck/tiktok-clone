@@ -1,15 +1,15 @@
 .DivContainerSug {
-   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
    position: absolute;
-   background-color: #fff;
-   z-index: 1001;
    width: 100%;
    height: auto;
    margin-top: 9px;
+   background-color: #fff;
    border-radius: 8px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   z-index: 1001;
 
    .DivInnerSug {
       margin-top: 8px;
@@ -22,8 +22,8 @@
 }
 
 .menuMore {
-   margin-top: 12%;
-   right: 200px;
+   top: 100%;
+   right: -16px;
    width: 223px;
-   display: none;
+   overflow: hidden;
 }

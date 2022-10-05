@@ -1,7 +1,6 @@
 .DivContainerHeader {
    display: flex;
    justify-content: space-around;
-   align-items: center;
    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
    width: 100%;
    height: 60px;
@@ -13,6 +12,7 @@
    --search-icon-color: rgba(22, 24, 35, 0.34);
 
    display: flex;
+   align-items: center;
    justify-content: space-between;
    padding: 5px 0;
    width: 1150px;
@@ -128,12 +128,13 @@
       margin-left: 16px;
       cursor: pointer;
       padding: 3px 3px 0;
-      width: 32px;
-      height: 32px;
+      width: 3.2rem;
+      height: 3.2rem;
 
-      a {
-         text-decoration: none;
-         color: black;
+      .MessIcon {
+         min-width: 0;
+         width: 3.2rem;
+         height: 3.2rem;
       }
    }
 
@@ -143,21 +144,61 @@
       padding: 3px 3px 0;
       width: 32px;
       height: 32px;
+      font-size: 16px;
+
+      .IbIcon {
+         min-width: 0;
+         width: 3.2rem;
+         height: 3.2rem;
+      }
+   }
+
+   .iconAction {
+      font-size: 25px;
+   }
+
+   .DivOptionContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-left: 16px;
+      user-select: none;
+      cursor: pointer;
+   }
+
+   .DivOptionContainer .popper-wrap {
+      margin-top: 15px;
+      padding-bottom: 8px;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s linear 0.7s, opacity 0.7s;
+   }
+
+   .DivOptionContainer:hover .popper-wrap {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s linear 0s, opacity 0.3s;
    }
 
    .DivProfileContainer {
-      margin-left: 26px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      border-radius: 50%;
       cursor: pointer;
-      background-color: rgb(238, 238, 238);
-      border-radius: 30px;
+      margin-left: 16px;
 
-      svg {
-         padding: 5px 9px;
+      .icon-more {
+         width: 20px;
+         height: 20px;
       }
 
-      &:hover {
-         background-color: var(--primary);
-         color: white;
+      .avatar-profile {
+         width: 32px;
+         height: 32px;
+         object-fit: cover;
+         border-radius: 50%;
       }
    }
 }

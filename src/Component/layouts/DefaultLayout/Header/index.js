@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import Tippy from '@tippyjs/react';
+import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 import AccountsItem from '~/Component/AccountsItem';
@@ -9,13 +9,31 @@ import DivItemContent from '~/Component/DivItemContent';
 import PopperWrapper from '~/Component/PopperWrapper';
 import MenuList from '~/Component/PopperWrapper/MenuList';
 import Button from '~/Component/Button';
+import "~/Component/PopperWrapper/MenuList/MenuList.module.scss"
+import Image from '~/Component/Image';
 import style from './header.module.scss'
+import { InboxIcon, MessageIcon } from '~/Asset/icons'
 import images from '~/Asset/img'
+
+
 
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon="fa-solid fa-globe" />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt'
+                }
+            ]
+        }
     },
     {
         icon: <FontAwesomeIcon icon="fa-regular fa-circle-question" />,
@@ -28,7 +46,40 @@ const MENU_ITEMS = [
     }
 ]
 
+const USER_MENU = [
+    {
+        icon: <FontAwesomeIcon icon="fa-regular fa-user" />,
+        title: 'View Profiles',
+        to: '/profile'
+    },
+    {
+        icon: <img src={images.coin} alt='coin' />,
+        title: 'Get coins',
+        to: '/getCoin'
+    },
+    {
+        icon: <FontAwesomeIcon icon="fa-solid fa-video" />,
+        title: 'LIVE Studio',
+        to: '/studio'
+    },
+    {
+        icon: <FontAwesomeIcon icon="fa-solid fa-gear" />,
+        title: 'Setting',
+        to: '/setting'
+    },
+    ...MENU_ITEMS,
+    {
+        icon: < FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />,
+        title: 'Log out',
+        to: '/logout',
+        separate: true,
+    }
+
+]
+
 function Header() {
+
+    const currentUser = true
 
     return (
         <header className={style.DivContainerHeader}>
@@ -81,31 +132,49 @@ function Header() {
 
                 {/* Action */}
                 <div className={style.DivUploadAndUser}>
-                    <Button upload to='/upload'>
-                        <FontAwesomeIcon icon="fas fa-plus" />
+                    <Button upload to='/upload' leftIcon={<FontAwesomeIcon icon="fas fa-plus" />}>
                         Upload
                     </Button>
-                    <Button primary to='/login'>Log in</Button>
+                    {currentUser ? (
+                        <>
+                            <Tippy content='Message'>
+                                <div className={style.DivMessageContainer}>
+                                    <Button to='/message' className={style.MessIcon}>
+                                        <MessageIcon />
+                                    </Button>
+                                </div>
+                            </Tippy>
 
-                    {/* <Tippy content='Message'>
-                        <div className={style.DivMessageContainer}>
-                            <Link to={{ pathname: '/message' }}>
-                                <FontAwesomeIcon icon="far fa-paper-plane" />
-                            </Link>
-                        </div>
-                    </Tippy>
+                            <Tippy content='Inbox'>
+                                <div className={style.DivInboxContainer}>
+                                    <Button className={style.IbIcon}>
+                                        <InboxIcon />
+                                    </Button>
+                                </div>
+                            </Tippy>
+                        </>
 
-                    <Tippy content='Inbox'>
-                        <div className={style.DivInboxContainer}>
-                            <FontAwesomeIcon icon="fas fa-inbox" />
-                        </div>
-                    </Tippy>
-                    <div className={style.DivProfileContainer}>
-                        <FontAwesomeIcon icon="fas fa-user" />
-                    </div> */}
+                    ) : (
+                        <>
+                            <Button primary to='/login'>Log in</Button>
 
+                        </>
+                    )
+                    }
+                    <div className={style.DivOptionContainer} >
 
-                    <MenuList items={MENU_ITEMS} />
+                        {currentUser ? (
+                            <div className={style.DivProfileContainer}>
+                                <Image className={style['avatar-profile']} src={images.avatar} alt='PhuongNguyen' />
+                                <MenuList className={style['popper-wrap']} items={USER_MENU} />
+                            </div>
+                        ) : (
+                            <div className={style.DivProfileContainer}>
+                                <Image className={style['icon-more']} src={images.option} alt='More Option' />
+                                <MenuList className={style['popper-wrap']} items={MENU_ITEMS} />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </header>

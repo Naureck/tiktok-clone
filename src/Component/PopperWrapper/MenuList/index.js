@@ -1,31 +1,66 @@
-
+import { useState } from 'react';
 import classNames from 'classnames/bind';
+
 import DivItemContent from '~/Component/DivItemContent';
 import PopperWrapper from '~/Component/PopperWrapper';
 import style from './MenuList.module.scss'
-import images from '~/Asset/img'
 import MenuItems from './MenuItems';
+import Header from './Header';
 
+
+const delay = (time) => new Promise((res) => setTimeout(() => {
+    res()
+}, time))
 
 const cx = classNames.bind(style)
 
-function MenuList({ items = [] }) {
+function MenuList({ items = [], className }) {
+    const [toggleClass, setToggleClass] = useState(false)
+    const [history, setHistory] = useState([{ data: items }])
+    const current = history[history.length - 1]
 
-    const renderItems = () => {
-        return items.map((item, index) => (
-            <DivItemContent key={index}>
-                <MenuItems data={item} />
-            </DivItemContent>
-        ))
+
+    const handleBackMenu = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1))
+        setToggleClass(!toggleClass)
     }
 
+
+
+    const handleHideBack = async () => {
+        await delay(550)
+        setHistory(prev => {
+            return prev.slice(0, 1)
+        })
+    }
+
+    const renderItems = () => {
+        return current.data.map((item, index) => {
+            const isParent = !!item.children
+
+            const handleChangeItem = () => {
+                if (isParent) {
+                    setHistory(prev => [...prev, item.children]);
+                    setToggleClass(!toggleClass)
+                }
+            }
+
+            return (
+                <DivItemContent key={index} separate={item.separate}>
+                    <MenuItems className={toggleClass ? style['sub-menu-item'] : null} data={item} onClick={handleChangeItem} />
+                </DivItemContent>
+            )
+        })
+    }
+
+
     return (
-        <div className={style.DivOptionContainer} >
-            <img src={images.option} alt='More Option' />
-            <PopperWrapper className={cx('popper-wrap')} menuMore>
+        <>
+            <PopperWrapper className={cx('wrapper', className)} menuMore onHide={handleHideBack}>
+                {history.length > 1 && <Header title='Language' onBack={handleBackMenu} />}
                 {renderItems()}
             </PopperWrapper>
-        </div >
+        </>
     )
 }
 

@@ -1,8 +1,17 @@
+import classNames from 'classnames/bind'
 import style from './DivItemContent.module.scss'
 
-function DivItemContent({ children }) {
+const cx = classNames.bind(style)
+
+function DivItemContent({ children, separate }) {
+
+    const classes = cx('wrapper', {
+        separate
+    })
+
+
     return (
-        <div className={style.wrapper}>{children}</div>
+        <div className={classes}>{children}</div>
     )
 }
 
