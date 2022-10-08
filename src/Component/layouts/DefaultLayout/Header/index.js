@@ -4,15 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-import AccountsItem from '~/Component/AccountsItem';
-import DivItemContent from '~/Component/DivItemContent';
-import PopperWrapper from '~/Component/PopperWrapper';
+
 import MenuList from '~/Component/PopperWrapper/MenuList';
 import Button from '~/Component/Button';
 import "~/Component/PopperWrapper/MenuList/MenuList.module.scss"
 import Image from '~/Component/Image';
-import style from './header.module.scss'
 import { InboxIcon, MessageIcon } from '~/Asset/icons'
+import Search from '../Search'
+import style from './header.module.scss'
 import images from '~/Asset/img'
 
 
@@ -91,44 +90,8 @@ function Header() {
                 </Link>
 
                 {/* Search */}
-                <div className={style.DivSearchMachine}>
-                    <form className={style.FromElement}>
-                        <input className={style.InputElement} type='search' placeholder='Search accounts and videos' autoComplete='off' />
-                        <FontAwesomeIcon className={style.ClearBtn} icon="fa-solid fa-circle-xmark" />
-                        <FontAwesomeIcon className={style.Loading} icon="fa-solid fa-spinner" />
-                        <span className={style.SpanSplice}></span>
-                        <button className={style.BtnSearch} type='submit'>
-                            <FontAwesomeIcon icon="fas fa-search" />
-                        </button>
-                    </form>
+                <Search />
 
-                    <PopperWrapper searchResult>
-                        <DivItemContent>
-                            <img className={style.IconInnerResult} src={images.search} alt='Search...' />
-                            <a className={style.ResultText} href='/'>a</a>
-                        </DivItemContent>
-                        <DivItemContent>
-                            <img className={style.IconInnerResult} src={images.search} alt='Search...' />
-                            <a className={style.ResultText} href='/'>a</a>
-                        </DivItemContent>
-                        <DivItemContent>
-                            <img className={style.IconInnerResult} src={images.search} alt='Search...' />
-                            <a className={style.ResultText} href='/'>a</a>
-                        </DivItemContent>
-                        <DivItemContent>
-                            <img className={style.IconInnerResult} src={images.search} alt='Search...' />
-                            <a className={style.ResultText} href='/'>a</a>
-                        </DivItemContent>
-                        <div className={style.SearchTitle}>Accounts</div>
-                        <AccountsItem />
-                        <AccountsItem />
-                        <AccountsItem />
-                        <AccountsItem />
-                        <DivItemContent>
-                            <span>View all results for "hoa"</span>
-                        </DivItemContent>
-                    </PopperWrapper>
-                </div>
 
                 {/* Action */}
                 <div className={style.DivUploadAndUser}>
@@ -150,6 +113,9 @@ function Header() {
                                     <Button className={style.IbIcon}>
                                         <InboxIcon />
                                     </Button>
+                                    <div className={style.CircleNoticedInbox}>
+                                        <span>24</span>
+                                    </div>
                                 </div>
                             </Tippy>
                         </>
