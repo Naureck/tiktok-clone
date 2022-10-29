@@ -6,10 +6,38 @@
       border-radius: 0;
       line-height: 1.8rem;
    }
+
+   .arrowUp {
+      overflow: visible;
+      content: '';
+      display: inline-block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: -12px;
+      right: 15px;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-bottom: 15px solid white;
+   }
+
+   .arrowUser {
+      right: 23px;
+   }
+
+   .sub-menu-item span {
+      font-size: 14px !important;
+   }
+}
+
+.MenuBody {
+   overflow-y: auto;
+   max-height: var(--max-height-menu-list);
 }
 
 //Header
 .header-wrapper {
+   flex-shrink: 0;
    position: relative;
    height: 50px;
    margin-top: -8px;
@@ -31,7 +59,6 @@
    font-size: 16px;
 }
 
-.sub-menu-item {
-   font-size: 14px;
-   font-weight: normal;
+.menuOption {
+   margin-top: 15px;
 }

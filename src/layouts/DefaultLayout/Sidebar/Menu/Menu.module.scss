@@ -1,0 +1,46 @@
+.Wrapper {
+   margin-bottom: 8px;
+   padding: 0;
+}
+
+.MenuItems {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   padding: 8px;
+   border-radius: 4px;
+   transition: ease-in-out 200ms;
+
+   &.active {
+      color: var(--primary);
+
+      .icon {
+         display: none;
+      }
+
+      .activeIcon {
+         display: flex;
+      }
+   }
+
+   &:hover {
+      background: var(--item-hover);
+   }
+}
+
+.icon,
+.activeIcon {
+   display: flex;
+}
+
+.activeIcon {
+   display: none;
+}
+
+.TitleItem {
+   font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 25px;
+   margin-left: 8px;
+}

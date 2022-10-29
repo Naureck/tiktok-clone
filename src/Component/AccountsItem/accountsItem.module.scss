@@ -11,11 +11,12 @@
 .name {
    font-size: 16px;
    font-weight: 600;
+   font-family: 'ProximaNova', 'Arial', 'Tahoma', sans-serif;
 }
 
 .check {
    margin-left: 4px;
-   color: rgb(32, 213, 236);
+   color: var(--icon-check-color);
    font-size: 13px;
 }
 

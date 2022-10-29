@@ -1,0 +1,76 @@
+.DivDiscoverContainer {
+   position: relative;
+   box-sizing: border-box;
+   width: 100%;
+   padding: 16px 8px 8px;
+
+   .TextInnerDiscover {
+      color: rgba(22, 24, 35, 0.75);
+      font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      padding-bottom: 16px;
+   }
+
+   &::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      top: 0;
+      height: 1px;
+      background: rgba(22, 24, 35, 0.12);
+      -webkit-transform: scaleY(0.5);
+      -moz-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+   }
+}
+
+.DiscoverList {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+
+   .btn-hashTag {
+      width: 0;
+      display: block;
+      width: fit-content;
+      padding-left: 0;
+      margin-left: 0;
+   }
+}
+
+.DivInnerHashTag {
+   display: flex;
+   align-items: center;
+   width: fit-content;
+   height: 24px;
+   padding: 3px 10px;
+   border: 1px solid rgba(22, 24, 35, 0.2);
+   border-radius: 12px;
+   background-color: white;
+   transition: 200ms ease-in-out 0s;
+   width: 100%;
+
+   .styleIcon {
+      flex-shrink: 0;
+   }
+
+   .PText {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      color: rgba(22, 24, 35, 0.75);
+      font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      padding-left: 6px;
+   }
+
+   &:hover {
+      background: rgba(22, 24, 35, 0.03);
+   }
+}

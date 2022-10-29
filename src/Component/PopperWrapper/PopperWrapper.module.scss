@@ -12,18 +12,19 @@
    z-index: 1001;
 
    .DivInnerSug {
+      display: flex;
+      flex-direction: column;
       margin-top: 8px;
       width: 100%;
    }
-}
-
-.searchResult {
-   visibility: visible;
 }
 
 .menuMore {
    top: 100%;
    right: -16px;
    width: 223px;
-   overflow: hidden;
+}
+
+.menuOption {
+   margin-top: 15px;
 }

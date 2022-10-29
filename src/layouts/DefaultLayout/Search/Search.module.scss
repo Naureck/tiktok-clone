@@ -1,0 +1,114 @@
+.DivSearchMachine {
+   position: relative;
+   width: 361px;
+   height: 46px;
+   background-color: rgb(241, 241, 242);
+   border-radius: 92px;
+   border: 1.5px solid transparent;
+
+   .FromElement {
+      display: flex;
+      align-items: center;
+      width: 361px;
+      height: 100%;
+      padding: 0px 0px 0px 16px;
+      display: flex;
+      align-items: center;
+
+      .InputElement {
+         padding-right: 25px;
+         height: 100%;
+         border: none;
+         outline: none;
+         font-size: 16px;
+         background-color: transparent;
+         width: 292px;
+         height: 32px;
+         caret-color: var(--primary);
+         font-family: var(--font-primary);
+      }
+
+      .InputElement::-webkit-search-cancel-button {
+         margin-right: 20px;
+         -webkit-appearance: none;
+      }
+
+      .InputElement:not(:placeholder-shown) ~ .BtnSearch {
+         color: rgba(22, 24, 35, 0.75);
+      }
+   }
+
+   .ClearBtn,
+   .Loading {
+      position: absolute;
+      font-size: 16px;
+      right: calc(var(--search-button-width) + 16px);
+      color: var(--search-icon-color);
+      cursor: pointer;
+   }
+
+   .Loading {
+      animation: spinner 1.5s linear infinite;
+   }
+
+   @keyframes spinner {
+      from {
+         transform: rotate(0);
+      }
+      to {
+         transform: rotate(360deg);
+      }
+   }
+
+   &:focus-within {
+      border-color: #c5c6c9;
+   }
+}
+
+.SpanSplice {
+   width: 1px;
+   height: 28px;
+   margin: -3px 0;
+   background: rgba(22, 24, 35, 0.12);
+}
+
+.BtnSearch {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: transparent;
+   border-radius: 0px 92px 92px 0;
+   border: none;
+   outline: none;
+   padding: 10px 16px 11px 12px;
+   cursor: pointer;
+   color: var(--search-icon-color);
+   font-size: 1.8rem;
+   width: var(--search-button-width);
+
+   &:hover {
+      background-color: rgb(232, 232, 233);
+   }
+}
+
+//Search Result
+
+.IconInnerResult {
+   width: 15px;
+   height: 15px;
+   margin-right: 10px;
+}
+
+.ResultText {
+   color: black;
+   text-decoration: none;
+   font-size: 16px;
+   font-weight: 700;
+}
+
+.SearchTitle {
+   padding: 5px 12px;
+   font-size: 14px;
+   font-weight: 600;
+   color: rgba(22, 24, 35, 0.5);
+}

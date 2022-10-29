@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import '~/Component/FontawesomeIcon'
 import { publicRoutes as routes } from '~/routes'
-import { DefaultLayout } from '~/Component/layouts'
+import { DefaultLayout } from '~/layouts'
 
 function App() {
   return (
