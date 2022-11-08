@@ -4,19 +4,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { EmojiFlags, Favorite, Sms } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
+import { HtmlTooltip } from '../ToolTip';
 import Button from '~/Component/Button';
 import { MusicIcon, MuteIcon, VolumeIcon } from '~/Asset/icons';
 import Image from '~/Component/Image';
-import videoTikTok from '~/Asset/videos/video-tiktok-2.mp4';
 import styles from './VideoContent.module.scss';
 
-function VideoContent({ userName, nickName, desc, musicName, src, alt }) {
+function VideoContent({
+   userName,
+   nickName,
+   userBio,
+   desc,
+   musicName,
+   src,
+   urlVideo,
+   alt,
+   numFollows,
+   numLikes,
+   videoLikes,
+   videoCmt,
+   videoShare,
+   checked,
+}) {
    const [playing, setPlaying] = useState(false);
    const [videoTime, setVideoTime] = useState(0);
    const [currentTime, setCurrentTime] = useState(0);
    const [progress, setProgress] = useState(0);
+   const [sound, setSound] = useState(true);
    const videoRef = useRef(null);
-   const sound = false;
 
    useEffect(() => {
       window.setInterval(function () {
@@ -36,15 +51,49 @@ function VideoContent({ userName, nickName, desc, musicName, src, alt }) {
          setPlaying(false);
       }
    };
+   const handleMuted = (control) => {
+      if (control === 'muted') {
+         setSound(false);
+      } else if (control === 'amplify') {
+         setSound(true);
+      }
+   };
    const videoTimeMinute = Math.floor(videoTime / 60);
 
    return (
       <div className={styles['wrapper']}>
-         <Link to="/@">
-            <div className={styles['container-img']}>
-               <Image loading="lazy" effect="blur" className={styles['avatar']} src={src} alt={alt} />
-            </div>
-         </Link>
+         <HtmlTooltip
+            className={styles['user-popper']}
+            title={
+               <>
+                  <div className={styles['header-profile']}>
+                     <Image className={styles['img-profile']} src={src} alt={alt} />
+                     <Button className={styles['btn-profile']} primary btnNormal>
+                        Follow
+                     </Button>
+                  </div>
+                  <Link className={styles['profile-name']}>
+                     <span className={styles['profile-title']}>{userName}</span>
+                     {checked && <FontAwesomeIcon className={styles['iconCheck']} icon="fa-solid fa-circle-check" />}
+                  </Link>
+                  <br />
+                  <Link className={styles['profile-nickName']}>{nickName}</Link>
+                  <p className={styles['user-stat']}>
+                     <span className={styles['span-user-stat-text']}>{numFollows}</span>
+                     <span className={styles['span-user-stat-desc']}>Followers</span>
+                     <span className={styles['span-user-stat-text']}>{numLikes}</span>
+                     <span className={styles['span-user-stat-desc']}>Likes</span>
+                  </p>
+                  <p className={styles['user-bio']}>{userBio}</p>
+               </>
+            }
+         >
+            <Link to="/@">
+               <div className={styles['container-img']}>
+                  <Image loading="lazy" effect="blur" className={styles['avatar']} src={src} alt={alt} />
+               </div>
+            </Link>
+         </HtmlTooltip>
          <div className={styles['container-content']}>
             <div className={styles['info-user']}>
                <div className={styles['author-name-container']}>
@@ -53,7 +102,7 @@ function VideoContent({ userName, nickName, desc, musicName, src, alt }) {
                      <h4 className={styles['nick-name']}>{nickName}</h4>
                   </Link>
                </div>
-               <Button className={styles['btn-follow']} outline small>
+               <Button className={styles['btn-follow']} outline small btnNormal>
                   Follow
                </Button>
                <div className={styles['video-desc']}>
@@ -84,12 +133,12 @@ function VideoContent({ userName, nickName, desc, musicName, src, alt }) {
                               <video
                                  id="video1"
                                  ref={videoRef}
-                                 muted
+                                 muted={sound}
                                  className={styles['video']}
-                                 src={videoTikTok}
+                                 src={urlVideo}
                                  tabIndex="2"
                                  type="video/mp4"
-                              ></video>
+                              />
                            </div>
                         </div>
                      </div>
@@ -109,17 +158,17 @@ function VideoContent({ userName, nickName, desc, musicName, src, alt }) {
                      <div className={styles['volume-action-video']}>
                         <div className={styles['volume-control-container']}></div>
                         {sound ? (
-                           <div className={styles['volume-icon-sound']}>
-                              <VolumeIcon />
-                           </div>
-                        ) : (
-                           <div className={styles['volume-icon-mute']}>
+                           <span onClick={() => handleMuted('muted')} className={styles['volume-icon-mute']}>
                               <MuteIcon />
-                           </div>
+                           </span>
+                        ) : (
+                           <span onClick={() => handleMuted('amplify')} className={styles['volume-icon-sound']}>
+                              <VolumeIcon />
+                           </span>
                         )}
                      </div>
                      {/* Progress bar time control */}
-                     {videoTimeMinute === 0 ? (
+                     {videoTimeMinute !== 0 ? (
                         <div className={styles['time-control-container']}>
                            <div className={styles['time-progressBar-Container']}>
                               <div className={styles['time-progressBar-bg']}></div>
@@ -151,19 +200,19 @@ function VideoContent({ userName, nickName, desc, musicName, src, alt }) {
                      <span className={styles['span-icon-wrapper']}>
                         <Favorite className={styles['icon-action']} />
                      </span>
-                     <strong className={styles['strong-text']}>1M</strong>
+                     <strong className={styles['strong-text']}>{videoLikes}</strong>
                   </button>
                   <button className={styles['btn-action-item']}>
                      <span className={styles['span-icon-wrapper']}>
                         <Sms className={styles['icon-action']} />
                      </span>
-                     <strong className={styles['strong-text']}>1M</strong>
+                     <strong className={styles['strong-text']}>{videoCmt}</strong>
                   </button>
                   <button className={styles['btn-action-item']}>
                      <span className={styles['span-icon-wrapper']}>
                         <FontAwesomeIcon icon="fa-solid fa-share" className={styles['icon-action']} />
                      </span>
-                     <strong className={styles['strong-text']}>1M</strong>
+                     <strong className={styles['strong-text']}>{videoShare}</strong>
                   </button>
                </div>
             </div>
@@ -179,6 +228,12 @@ VideoContent.propTypes = {
    musicName: PropTypes.string.isRequired,
    src: PropTypes.string.isRequired,
    alt: PropTypes.string.isRequired,
+   numFollows: PropTypes.string.isRequired,
+   numLikes: PropTypes.string.isRequired,
+   videoLikes: PropTypes.string.isRequired,
+   videoCmt: PropTypes.string.isRequired,
+   videoShare: PropTypes.string.isRequired,
+   checked: PropTypes.bool,
 };
 
 export default VideoContent;

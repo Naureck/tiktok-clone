@@ -10,3 +10,82 @@
    display: flex;
    flex-direction: column;
 }
+
+.BottomContainer {
+   right: 24px;
+   position: fixed;
+   bottom: 0px;
+   z-index: 7;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   margin-bottom: 8px;
+   transform: none;
+   transition: all 400ms cubic-bezier(0.65, 0, 0.35, 1) 0s;
+
+   .GuiInteractContainer {
+   }
+
+   .PromotionContainer {
+      margin-bottom: 12px;
+      display: flex;
+      position: relative;
+   }
+
+   .PromotionContainer .btnGetApp {
+      border: 1px solid rgba(22, 24, 35, 0.12);
+      background-color: white;
+      //background: none rgb(37, 37, 37);
+      outline: none;
+      color: rgba(22, 24, 35, 0.75);
+      //color: rgba(255, 255, 255, 0.75);
+      font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      position: relative;
+      right: 0px;
+      bottom: 0px;
+      padding: 0px 8px;
+      min-width: 90px;
+      height: 32px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+      //box-shadow: rgb(0 0 0 / 6%) 0px 2px 8px;
+      border-radius: 52px;
+      cursor: pointer;
+      line-height: 30px;
+      text-align: center;
+      white-space: nowrap;
+      transition: transform 0.3s cubic-bezier(0.4, 0.14, 0.3, 1) 0s;
+      transform-origin: right bottom;
+      transform: none;
+
+      &:hover {
+         border-color: rgba(22, 24, 35, 0.2);
+         background-color: rgba(255, 255, 255, 1);
+         // border-color: rgba(255, 255, 255, 0);
+         // background-color: rgb(46, 46, 46);
+      }
+   }
+
+   .btnScrollOnTop {
+      color: #fff;
+      background: none;
+      outline: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 52px;
+      background: rgba(254, 44, 85, 1);
+      box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+   }
+}
